@@ -57,13 +57,17 @@
 
 ```text
 com.example.myapplication
- ├── model/           # 数据模型 (User, BiliResponse, AliResult)
- ├── service/         # 核心业务服务 (独立于 UI)
- │    ├── AuthService.kt       # 登录注册逻辑
- │    ├── BilibiliService.kt   # B站接口解析
- │    └── AudioService.kt      # FFmpeg转码与AI识别
- ├── viewmodel/       # 视图模型 (连接 UI 与 Service)
- │    ├── UserViewModel.kt     # 处理登录状态
- │    └── TranscribeViewModel.kt # 处理转写流程
- ├── ui/              # 界面层 (Activity/Fragment)
- └── utils/           # 工具类 (FileUtils, TimeUtils, Constants)
+ ├── data/            # 数据层 (Entity, DAO, Database)
+ ├── model/           # 业务模型 (User, BiliResponse, AliResult)
+ ├── service/         # 核心后台服务 (独立于 UI)
+ │    ├── AuthService.kt       # 鉴权逻辑
+ │    ├── BilibiliService.kt   # B站接口逆向解析
+ │    └── AudioService.kt      # 音频转码与 AI 识别实现
+ ├── ui/              # 界面层 (Compose Screens)
+ │    ├── components/          # 通用组件 (按钮, 头部等)
+ │    ├── screens/             # 页面 (Login, Register, Transcribe, etc.)
+ │    └── theme/               # 主题配置 (Color, Type)
+ ├── viewmodel/       # 视图模型 (状态管理)
+ │    ├── LoginViewModel.kt    
+ │    └── TranscribeViewModel.kt 
+ └── utils/           # 工具类 (FileUtils, TimeUtils)
