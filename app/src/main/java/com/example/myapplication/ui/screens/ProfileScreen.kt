@@ -17,65 +17,64 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import com.example.myapplication.data.User
-import com.example.myapplication.ui.components.BottomNavigationBar
+//import com.example.myapplication.ui.components.BottomNavigationBar
 import com.example.myapplication.ui.theme.PrimaryBlue
 
 @Composable
-fun ProfileScreen(user: User?, onLogout: () -> Unit) {
-    Scaffold(
-        bottomBar = { BottomNavigationBar() },
-        containerColor = Color.White
-    ) { innerPadding ->
+fun ProfileScreen(user: User?,
+                  onLogout: () -> Unit) {
+    val scrollState = rememberScrollState()
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+//                .padding(innerPadding)
+            .background(Color(0xFFF5F5F5))
+            .verticalScroll(scrollState),
+    ) {
+        // 1. 顶部用户信息卡片
+        ProfileHeader(
+            username = user?.username ?: "未登录",
+            avatarPath = user?.avatarPath
+        )
+
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // 2. 菜单列表
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .background(Color(0xFFF5F5F5))
+                .fillMaxWidth()
+                .background(Color.White)
         ) {
-            // 1. 顶部用户信息卡片
-            ProfileHeader(
-                username = user?.username ?: "未登录",
-                avatarPath = user?.avatarPath
+            ProfileMenuItem(icon = Icons.Default.Person, title = "个人信息") { }
+            HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
+
+            ProfileMenuItem(icon = Icons.Default.BookmarkBorder, title = "我的收藏") { }
+            HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
+
+            ProfileMenuItem(icon = Icons.Default.History, title = "浏览历史") { }
+            HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
+
+            ProfileMenuItem(icon = Icons.Default.Settings, title = "设置") { }
+            HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
+
+            ProfileMenuItem(icon = Icons.Default.Info, title = "关于我们") { }
+            HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
+
+            ProfileMenuItem(icon = Icons.Default.Notifications, title = "意见反馈") { }
+
+        }
+        Spacer(modifier = Modifier.height(96.dp))
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text("退出登录", color = PrimaryBlue,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.clickable { onLogout() }
             )
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            // 2. 菜单列表
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.White)
-            ) {
-                ProfileMenuItem(icon = Icons.Default.Person, title = "个人信息") { }
-                HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
-
-                ProfileMenuItem(icon = Icons.Default.BookmarkBorder, title = "我的收藏") { }
-                HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
-
-                ProfileMenuItem(icon = Icons.Default.History, title = "浏览历史") { }
-                HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
-
-                ProfileMenuItem(icon = Icons.Default.Settings, title = "设置") { }
-                HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
-
-                ProfileMenuItem(icon = Icons.Default.Info, title = "关于我们") { }
-                HorizontalDivider(color = Color(0xFFF0F0F0), thickness = 1.dp)
-
-                ProfileMenuItem(icon = Icons.Default.Notifications, title = "意见反馈") { }
-
-            }
-            Spacer(modifier = Modifier.weight(1f))
-            Row(
-                modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text("退出登录", color = PrimaryBlue,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.clickable { onLogout() }
-                )
-            }
         }
     }
 }

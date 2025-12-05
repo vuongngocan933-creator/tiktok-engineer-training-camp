@@ -37,47 +37,47 @@ fun SocialLoginButton(
 }
 
 // --- 底部导航栏 ---
-@Composable
-fun BottomNavigationBar() {
-    NavigationBar(
-        containerColor = Color.White,
-        tonalElevation = 8.dp
-    ) {
-        // 1. 首页
-        NavigationBarItem(
-            icon = { Icon(Icons.Outlined.Home, contentDescription = null) },
-            label = { Text("首页") },
-            selected = false,
-            onClick = { /* TODO: 跳转首页 */ },
-            colors = NavigationBarItemDefaults.colors(
-                unselectedIconColor = Color.Gray,
-                unselectedTextColor = Color.Gray
-            )
-        )
-
-        // 2. 信息
-        NavigationBarItem(
-            icon = { Icon(Icons.Outlined.List, contentDescription = null) },
-            label = { Text("信息") },
-            selected = false,
-            onClick = { /* TODO: 跳转信息 */ },
-            colors = NavigationBarItemDefaults.colors(
-                unselectedIconColor = Color.Gray,
-                unselectedTextColor = Color.Gray
-            )
-        )
-
-        // 3. 我的 (选中状态)
-        NavigationBarItem(
-            icon = { Icon(Icons.Filled.Person, contentDescription = null) },
-            label = { Text("我的") },
-            selected = true,
-            onClick = { },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = PrimaryBlue,
-                selectedTextColor = PrimaryBlue,
-                indicatorColor = Color.Transparent
-            )
-        )
-    }
-}
+//@Composable
+//fun BottomNavigationBar() {
+//    NavigationBar(
+//        containerColor = Color.White,
+//        tonalElevation = 8.dp
+//    ) {
+//        // 1. 首页
+//        NavigationBarItem(
+//            icon = { Icon(Icons.Outlined.Home, contentDescription = null) },
+//            label = { Text("首页") },
+//            selected = false,
+//            onClick = { /* TODO: 跳转首页 */ },
+//            colors = NavigationBarItemDefaults.colors(
+//                unselectedIconColor = Color.Gray,
+//                unselectedTextColor = Color.Gray
+//            )
+//        )
+//
+//        // 2. 信息
+//        NavigationBarItem(
+//            icon = { Icon(Icons.Outlined.List, contentDescription = null) },
+//            label = { Text("信息") },
+//            selected = false,
+//            onClick = { /* TODO: 跳转信息 */ },
+//            colors = NavigationBarItemDefaults.colors(
+//                unselectedIconColor = Color.Gray,
+//                unselectedTextColor = Color.Gray
+//            )
+//        )
+//
+//        // 3. 我的 (选中状态)
+//        NavigationBarItem(
+//            icon = { Icon(Icons.Filled.Person, contentDescription = null) },
+//            label = { Text("我的") },
+//            selected = true,
+//            onClick = { },
+//            colors = NavigationBarItemDefaults.colors(
+//                selectedIconColor = PrimaryBlue,
+//                selectedTextColor = PrimaryBlue,
+//                indicatorColor = Color.Transparent
+//            )
+//        )
+//    }
+//}
